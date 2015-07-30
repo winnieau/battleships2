@@ -2,6 +2,14 @@ require 'ship'
 
 describe Ship do
 
+  describe '#initialize' do
+
+    it 'creates a hit status' do
+      ship = Ship.new
+      expect(ship.hit?).to eq false 
+    end
+  end
+
   describe '#size_choices' do
     it { is_expected.to respond_to(:size_choices).with(1).argument }
 
@@ -31,5 +39,15 @@ describe Ship do
       subject.rotate('NS')
       expect(subject.rotation).to eq 'NS'
     end
+  end
+  describe '#hit?' do
+    it { is_expected.to respond_to(:hit?)}
+
+    it 'return true when ship is hit' do
+      subject.hit
+      expect(subject.hit?).to eq true
+    end
+    it { is_expected.to respond_to(:hit) }
+
   end
 end

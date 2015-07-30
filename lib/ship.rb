@@ -6,6 +6,7 @@ class Ship
   def initialize
     @size_choices = [1]
     @rotations = ["NS", "EW"]
+    @hit = false
   end
 
   def size_choices(size)
@@ -16,6 +17,14 @@ class Ship
   def rotate(direction)
     fail "Direction choice not valid" unless @rotations.include?(direction)
     @rotation = direction
+  end
+  
+  def hit
+    @hit = true
+  end
+  
+  def hit?
+    @hit
   end
 
 end
