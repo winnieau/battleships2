@@ -1,4 +1,5 @@
 require_relative 'ship'
+
 class Board
   def initialize
     @board_size = [10, 10]
@@ -14,12 +15,10 @@ class Board
   end
   def fire(ship, x, y)
     fail "Firing out of bounds" if board[y-1] == nil || board[y-1][x-1] == nil
-    
+
     if board[y-1][x-1] == "s" 
       ship.hit 
       board[y-1][x-1] = "x"
     end
-
   end
 end
-

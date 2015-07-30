@@ -3,7 +3,7 @@ require 'board'
 describe 'Features' do
 
 let(:board) { Board.new }
-let(:ship) { Ship.new}
+let(:ship) { Ship.new }
 
   it 'place the ship on the board' do
     expect { board.place(ship, 1, 1) }.not_to raise_error
@@ -25,9 +25,6 @@ let(:ship) { Ship.new}
     expect { ship.rotate("NE")}.to raise_error 'Direction choice not valid'
   end
 
-  # As a player
-  # So that I can win the game
-  # I would like to be able to fire at my opponents board
  describe 'firing' do
   it 'fire at the board' do
     expect { board.fire(ship, 1, 2) }.not_to raise_error
@@ -39,12 +36,12 @@ let(:ship) { Ship.new}
   it 'let the player knows that the ship has been hit' do
     board.place(ship,1,1)
     board.fire(ship,1,1)
-    expect(ship.hit?).to eq true
+    expect(ship.hit?).to be_truthy
   end
   it 'let the player know that the ship has been sunk' do
     board.place(ship,1,1)
     board.fire(ship,1,1)
-    expect(ship.sunk?).to eq true
+    expect(ship.sunk?).to be_truthy
   end
  end
 end
