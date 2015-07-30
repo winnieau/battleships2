@@ -6,10 +6,10 @@ describe Board do
     it { is_expected.to respond_to(:place).with(3).argument }
     it 'places ship in board location' do
       subject.place(ship,1,1)
-      expect((subject.board)[0] [0]).to eq ship
+    expect((subject.board)[0][0]).to eq "s"
     end
     it "Should raise an error if ship is not placed on board" do
-      expect {subject.place()}
+      expect{subject.place(ship,11,11)}.to raise_error "Ship is out of bounds"
     end
     it "raise error if ship is placed on existing ship" do
       subject.place(ship,1,1)

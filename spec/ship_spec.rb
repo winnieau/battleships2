@@ -1,10 +1,11 @@
 require 'ship'
 
 describe Ship do
+
   describe '#size_choices' do
     it { is_expected.to respond_to(:size_choices).with(1).argument }
 
-    it 'raises an error if choice is not valid' do
+    it 'raises an error when choice is not valid' do
       expect { subject.size_choices(!1) }.to raise_error 'Size choice not valid'
     end
 
