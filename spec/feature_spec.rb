@@ -41,5 +41,10 @@ let(:ship) { Ship.new}
     board.fire(ship,1,1)
     expect(ship.hit?).to eq true
   end
+  it 'let the player know that the ship has been sunk' do
+    board.place(ship,1,1)
+    board.fire(ship,1,1)
+    expect(ship.sunk?).to eq true
+  end
  end
 end

@@ -6,7 +6,7 @@ describe Ship do
 
     it 'creates a hit status' do
       ship = Ship.new
-      expect(ship.hit?).to eq false 
+      expect(ship.hit?).to eq false
     end
   end
 
@@ -48,6 +48,14 @@ describe Ship do
       expect(subject.hit?).to eq true
     end
     it { is_expected.to respond_to(:hit) }
+  end
 
+  describe '#sunk?' do
+    it { is_expected.to respond_to(:sunk?)}
+
+    it 'return true when ship is sunk' do
+      subject.hit
+      expect(subject.sunk?).to eq true
+    end
   end
 end

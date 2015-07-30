@@ -7,6 +7,7 @@ class Ship
     @size_choices = [1]
     @rotations = ["NS", "EW"]
     @hit = false
+    @sunk = false
   end
 
   def size_choices(size)
@@ -18,13 +19,19 @@ class Ship
     fail "Direction choice not valid" unless @rotations.include?(direction)
     @rotation = direction
   end
-  
+
   def hit
     @hit = true
+    @sunk = true
   end
-  
+
   def hit?
     @hit
   end
+
+  def sunk?
+    @sunk 
+  end
+
 
 end
