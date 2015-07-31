@@ -21,10 +21,14 @@ describe Ship do
   end
 
 
-  describe '#initialize#size' do
+  describe '#initialize#size#direction' do
     it 'creates the size for a ship' do
       ship = Ship.destroyer
       expect(ship.size).to eq 2
+    end
+    it 'creates a direction status' do
+      ship = Ship.destroyer
+      expect(ship.direction).to eq "vertical"
     end
     it 'creates a hit status' do
       ship = Ship.new(1)
@@ -67,7 +71,14 @@ describe Ship do
     end
   end
 
+  describe '#rotate' do
+    it {is_expected.to respond_to(:rotate)}
 
+    it 'rotates the direction of the ship' do
+      subject.rotate
+      expect(subject.direction).to eq "horizontal"
+    end
+  end
   describe '#hit?' do
     it { is_expected.to respond_to(:hit?)}
 

@@ -1,7 +1,7 @@
 
 class Ship
 
-  attr_reader :size, :rotation
+  attr_reader :size, :direction
 
   DESTROYER_SIZE = 2
   CRUISER_SIZE = 3
@@ -12,6 +12,7 @@ class Ship
     @size = size
     @hit = false
     @sunk = false
+    @direction = "vertical"
   end
 
   def self.destroyer
@@ -32,6 +33,10 @@ class Ship
 
   def self.carrier
     new(CARRIER_SIZE)
+  end
+
+  def rotate
+    @direction == "vertical" ? @direction = "horizontal" : @direction = "vertical"    
   end
 
   def hit
