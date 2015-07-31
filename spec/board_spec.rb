@@ -25,7 +25,7 @@ describe Board do
       expect{subject.fire(ship,11,11)}.to raise_error "Firing out of bounds"
     end
     it "lets player know the targetted ship has been hit" do
-      ship = Ship.new
+      ship = Ship.new(1)
       subject.place(ship,1,1)
       subject.fire(ship,1,1)
       expect(ship.hit?).to eq true

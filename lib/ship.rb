@@ -3,21 +3,21 @@ class Ship
 
   attr_reader :size, :rotation
 
-  def initialize
-    @size_choices = [1]
-    @rotations = ["NS", "EW"]
+  DESTROYER_SIZE = 2
+  CRUISER_SIZE = 3
+
+  def initialize(size)
+    @size = size
     @hit = false
     @sunk = false
   end
 
-  def size_choices(size)
-    fail "Size choice not valid" unless @size_choices.include?(size)
-    @size = size
+  def self.destroyer
+    new(DESTROYER_SIZE)
   end
 
-  def rotate(direction)
-    fail "Direction choice not valid" unless @rotations.include?(direction)
-    @rotation = direction
+  def self.cruiser
+    new(CRUISER_SIZE)
   end
 
   def hit

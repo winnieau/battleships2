@@ -1,45 +1,43 @@
 require 'ship'
 
 describe Ship do
+  subject { Ship.destroyer }
 
-  describe '#initialize' do
+  it 'knows the size of ships' do
+    expect(Ship::DESTROYER_SIZE).to eq 2
+  end
+  it 'knows the size of ships' do
+    expect(Ship::CRUISER_SIZE).to eq 3
+  end
 
+  describe '#initialize#size' do
+    it 'creates the size for a ship' do
+      ship = Ship.destroyer
+      expect(ship.size).to eq 2
+    end
     it 'creates a hit status' do
-      ship = Ship.new
+      ship = Ship.new(1)
       expect(ship.hit?).to eq false
     end
-  end
-
-  describe '#size_choices' do
-    it { is_expected.to respond_to(:size_choices).with(1).argument }
-
-    it 'raises an error when choice is not valid' do
-      expect { subject.size_choices(!1) }.to raise_error 'Size choice not valid'
-    end
-
-    it 'creates a ship the size of the input' do
-      subject.size_choices(1)
-      expect(subject.size).to eq 1
+    it 'creates a sunk status' do
+      ship = Ship.new(1)
+      expect(ship.sunk?).to eq false
     end
   end
 
-  describe '#rotate' do
-    it { is_expected.to respond_to(:rotate).with(1).argument }
-
-    it 'raises an error if choice is not a direction' do
-      expect { subject.rotate('agfgf') }.to raise_error 'Direction choice not valid'
-    end
-
-    it 'constrains ship direction to valid directions only' do
-      invalid_direction = 'dgdfgfgfdg'
-      expect { subject.rotate(invalid_direction) }.to raise_error 'Direction choice not valid'
-    end
-
-    it 'specifies ship direction' do
-      subject.rotate('NS')
-      expect(subject.rotation).to eq 'NS'
+  describe '.destroyer' do
+    it 'sets the ship size to destroyer' do
+      ship = Ship.destroyer
+      expect(ship.size).to eq Ship::DESTROYER_SIZE
     end
   end
+  describe '.cruiser' do
+    it 'sets the ship size to destroyer' do
+      ship = Ship.cruiser
+      expect(ship.size).to eq Ship::CRUISER_SIZE
+    end
+  end
+
   describe '#hit?' do
     it { is_expected.to respond_to(:hit?)}
 

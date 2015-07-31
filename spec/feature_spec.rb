@@ -3,7 +3,7 @@ require 'board'
 describe 'Features' do
 
 let(:board) { Board.new }
-let(:ship) { Ship.new }
+let(:ship) { Ship.new(1) }
 
   it 'place the ship on the board' do
     expect { board.place(ship, 1, 1) }.not_to raise_error
@@ -13,17 +13,27 @@ let(:ship) { Ship.new }
     expect { board.place(ship, 11, 11) }.to raise_error "Ship is out of bounds"
   end
 
-  it 'allows the player to choose a ship size' do
-    expect { ship.size_choices(1) }.not_to raise_error
+  it 'sets ship size to be destroyer\'s ship size' do
+    ship = Ship.destroyer
+    expect(ship.size).to eq 2
   end
 
-  it 'raise error when size choice not valid' do
-    expect { ship.size_choices(9) }.to raise_error 'Size choice not valid'
+  it 'sets ship size to be cruiser\'s ship size' do
+    ship = Ship.cruiser
+    expect(ship.size).to eq 3
   end
 
-  it 'raise error when direction choice not valid' do
-    expect { ship.rotate("NE")}.to raise_error 'Direction choice not valid'
-  end
+  # it 'allows the player to choose a ship size' do
+  #   expect { ship.size_choices(1) }.not_to raise_error
+  # end
+
+  # it 'raise error when size choice not valid' do
+  #   expect { ship.size_choices(9) }.to raise_error 'Size choice not valid'
+  # end
+
+  # it 'raise error when direction choice not valid' do
+  #   expect { ship.rotate("NE")}.to raise_error 'Direction choice not valid'
+  # end
 
  describe 'firing' do
   it 'fire at the board' do
