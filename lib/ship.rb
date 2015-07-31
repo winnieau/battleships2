@@ -5,7 +5,9 @@ class Ship
 
   DESTROYER_SIZE = 2
   CRUISER_SIZE = 3
-
+  SUBMARINE_SIZE = 3
+  BATTLESHIP_SIZE = 4
+  CARRIER_SIZE = 5
   def initialize(size)
     @size = size
     @hit = false
@@ -20,6 +22,18 @@ class Ship
     new(CRUISER_SIZE)
   end
 
+  def self.submarine
+    new(SUBMARINE_SIZE)
+  end
+
+  def self.battleship
+    new(BATTLESHIP_SIZE)
+  end
+
+  def self.carrier
+    new(CARRIER_SIZE)
+  end
+
   def hit
     @hit = true
     @sunk = true
@@ -30,7 +44,7 @@ class Ship
   end
 
   def sunk?
-    @sunk 
+    @sunk
   end
 
 

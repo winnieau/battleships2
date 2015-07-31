@@ -9,6 +9,17 @@ describe Ship do
   it 'knows the size of ships' do
     expect(Ship::CRUISER_SIZE).to eq 3
   end
+  it 'knows the size of ships' do
+    expect(Ship::SUBMARINE_SIZE).to eq 3
+  end
+  it 'knows the size of ships' do
+    expect(Ship::BATTLESHIP_SIZE).to eq 4
+  end
+  it 'knows the size of ships' do
+    expect(Ship::CARRIER_SIZE).to eq 5
+
+  end
+
 
   describe '#initialize#size' do
     it 'creates the size for a ship' do
@@ -37,6 +48,25 @@ describe Ship do
       expect(ship.size).to eq Ship::CRUISER_SIZE
     end
   end
+  describe '.submarine' do
+    it 'sets the ship size to submarine' do
+      ship = Ship.submarine
+      expect(ship.size).to eq Ship::SUBMARINE_SIZE
+    end
+  end
+  describe '.battleship' do
+    it 'sets the ship size to battleship' do
+      ship = Ship.battleship
+      expect(ship.size).to eq Ship::BATTLESHIP_SIZE
+    end
+  end
+  describe '.carrier' do
+    it 'sets the ship size to carrier' do
+      ship = Ship.carrier
+      expect(ship.size).to eq Ship::CARRIER_SIZE
+    end
+  end
+
 
   describe '#hit?' do
     it { is_expected.to respond_to(:hit?)}

@@ -23,6 +23,21 @@ let(:ship) { Ship.new(1) }
     expect(ship.size).to eq 3
   end
 
+  it 'sets ship size to be submarine\'s ship size' do
+    ship = Ship.submarine
+    expect(ship.size).to eq 3
+  end
+
+  it 'sets ship size to be battleship\'s ship size' do
+    ship = Ship.battleship
+    expect(ship.size).to eq 4
+  end
+
+  it 'sets ship size to be carrier\'s ship size' do
+    ship = Ship.carrier
+    expect(ship.size).to eq 5
+  end
+
   # it 'allows the player to choose a ship size' do
   #   expect { ship.size_choices(1) }.not_to raise_error
   # end
